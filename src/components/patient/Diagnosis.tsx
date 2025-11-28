@@ -94,7 +94,7 @@ const Diagnosis = ({ diagnosis }: DiagnosisProps) => {
   const latest = diagnosis.at(-1);
 
   return (
-    <div className="bg-white rounded-2xl p-4 flex flex-col gap-6 h-1/2 w-full overflow-hidden">
+    <section className="bg-white rounded-2xl p-4 flex flex-col gap-6 h-full w-full overflow-hidden xs:order-1 lg:order-0">
       <h1 className="font-bold text-2xl">Diagnosis History</h1>
       <div className="flex flex-col overflow-auto gap-2 pr-2">
         <div className="bg-purple-50 rounded-xl p-4 flex flex-col gap-4 h-fit">
@@ -107,8 +107,8 @@ const Diagnosis = ({ diagnosis }: DiagnosisProps) => {
             </div>
             <Line data={chartData} options={chartOptions} />
           </div>
-          <div className="flex gap-8">
-            <div className="flex flex-col gap-2">
+          <div className="flex gap-8 self-center">
+            <div className="flex flex-col items-center gap-2">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-purple-400" />
                 <span className="font-semibold text-[#072635]">Systolic</span>
@@ -128,7 +128,7 @@ const Diagnosis = ({ diagnosis }: DiagnosisProps) => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col items-center gap-2">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full bg-indigo-400" />
                 <span className="font-semibold text-[#072635]">Diastolic</span>
@@ -150,7 +150,7 @@ const Diagnosis = ({ diagnosis }: DiagnosisProps) => {
             </div>
           </div>
         </div>
-        <div className="flex gap-2 h-full">
+        <div className="grid xs:grid-cols-2 sm:grid-cols-3 gap-2 h-fit">
           <VitalsCard
             bg_color="bg-[#E0F3FA]"
             image_source={lungs}
@@ -178,7 +178,7 @@ const Diagnosis = ({ diagnosis }: DiagnosisProps) => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -198,13 +198,21 @@ const VitalsCard = ({
   levels: string | undefined;
 }) => {
   return (
-    <div className={`${bg_color} flex flex-col rounded-xl p-4 h-fit flex-1`}>
-      <div className="flex flex-col">
-        <img src={image_source} alt={image_alt} width={100} height={100} />
-        <div className="flex flex-col mt-4">
+    <div
+      className={`${bg_color} flex flex-col items-center justify-between rounded-xl p-4 h-auto flex-1`}
+    >
+      <div className="flex items-center flex-col">
+        <img
+          className="xs:size-18 sm:size-min"
+          src={image_source}
+          alt={image_alt}
+          width={100}
+          height={100}
+        />
+        <div className="flex flex-col items-center mt-4">
           <p className="font-medium text-base text-[#072635]">{label}</p>
 
-          <p className="font-bold text-2xl text-[#07263]">
+          <p className="font-bold  text-2xl text-[#07263]">
             {label === "Respiratory rate" || label === "Heart rate"
               ? `${value} bpm`
               : `${value} °F`}
@@ -212,7 +220,7 @@ const VitalsCard = ({
         </div>
       </div>
       {label === "Heart rate" ? (
-        <p className="text-sm text-[#07263] mt-3.5 flex items-center gap-2">
+        <p className="xs:text-xs sm:text-sm text-[#07263] mt-3.5 flex items-center gap-2">
           <img
             src={chevron_down}
             alt="Chevron down icon"
@@ -222,7 +230,7 @@ const VitalsCard = ({
           <span>{levels}</span>
         </p>
       ) : (
-        <p className="text-sm text-[#07263] mt-3.5">
+        <p className="xs:text-xs sm:text-sm text-[#07263] mt-3.5">
           <span>{levels}</span>
         </p>
       )}

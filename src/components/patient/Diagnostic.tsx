@@ -10,7 +10,7 @@ type Diagnostic = {
 
 const Diagnostic = ({ diagnostic }: Diagnostic) => {
   return (
-    <div className="bg-white rounded-2xl p-4 flex flex-col gap-9 h-1/2 overflow-hidden">
+    <section className="bg-white rounded-2xl p-4 flex flex-col gap-9 h-full overflow-hidden w-full">
       <h1 className="font-bold text-2xl">Diagnostic List</h1>
       <div className="overflow-auto">
         <table className="min-w-full">
@@ -30,7 +30,7 @@ const Diagnostic = ({ diagnostic }: Diagnostic) => {
           })}
         </table>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -19,24 +19,19 @@ const Patient = () => {
   const { id } = useParams();
   const { patients } = useOutletContext<OutletContext>();
 
-  if (!patients) return <p className="p-4">Loading...</p>;
-
   const patient = patients.find(
     (patient) =>
       patient.name.toLowerCase() === decodeURIComponent(id || "").toLowerCase()
   );
 
-  if (!patient) return <p className="p-4">Patient not found.</p>;
+  if (!patient) return <p className="p-4">No patient.</p>;
 
   return (
-    <section className="flex w-full h-full basis-full gap-3">
-      <section className="flex flex-col w-full gap-3">
+    <section className="flex flex-col xs:w-full lg:basis-full gap-3 lg:overflow-auto lg:pr-2 scrollbar-hide">
+      <section className="flex xs:flex-col lg:flex-row gap-3 xs:h-dvh lg:h-1/2">
         <Diagnosis diagnosis={patient.diagnosis_history} />
-        <Diagnostic diagnostic={patient.diagnostic_list} />
-      </section>
-      <section className="flex flex-col w-[40%] gap-3 h-full">
-        <div className="bg-white rounded-2xl p-4 flex flex-col h-1/2 w-full overflow-hidden">
-          <div className="flex flex-col items-center gap-4 self-center">
+        <section className="bg-white rounded-2xl p-4 flex xs:flex-col sm:flex-row lg:flex-col h-full xs:w-full lg:w-1/2 overflow-hidden">
+          <div className="flex xs:flex-row sm:flex-col items-center gap-4 xs:self-start  md:self-start lg:self-center">
             <img
               className="bg-center"
               src={patient.profile_picture}
@@ -46,7 +41,7 @@ const Patient = () => {
             />
             <p className="font-bold text-lg">{patient.name}</p>
           </div>
-          <ul className="flex flex-col gap-6 mt-8 overflow-auto">
+          <ul className="flex flex-col gap-6 xs:mt-8 md:mt-0 md:pt-4 lg:mt-8 lg:pt-0 overflow-auto h-full basis-full sm:ml-8 lg:ml-0">
             <ProfileInfo
               image_source={calendar}
               image_alt="Calendar icon"
@@ -83,7 +78,10 @@ const Patient = () => {
               Show All Information
             </button>
           </ul>
-        </div>
+        </section>
+      </section>
+      <section className="flex xs:flex-col lg:flex-row gap-3 xs:h-dvh lg:h-1/2">
+        <Diagnostic diagnostic={patient.diagnostic_list} />
         <LabResult lab_results={patient.lab_results} />
       </section>
     </section>

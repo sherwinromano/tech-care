@@ -4,7 +4,7 @@ import doctorImage from "../../assets/doctor-image.jpg";
 
 const User = () => {
   return (
-    <div className="flex">
+    <div className="xs:hidden lg:flex">
       <div className="flex items-center gap-2 pr-3 border-r border-r-[#cccccc50]">
         <img
           className="object-cover rounded-[50%] h-9 w-9"
