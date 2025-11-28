@@ -5,7 +5,7 @@ import gender_male from "../../assets/icons/male.svg";
 import shield from "../../assets/icons/shield.svg";
 
 import { useParams, useOutletContext } from "react-router-dom";
-import type { PatientData } from "../../App";
+import type { PatientData } from "../../lib/types";
 import Diagnostic from "./Diagnostic";
 import Diagnosis from "./Diagnosis";
 import ProfileInfo from "./ProfileInfo";
@@ -24,7 +24,14 @@ const Patient = () => {
       patient.name.toLowerCase() === decodeURIComponent(id || "").toLowerCase()
   );
 
-  if (!patient) return <p className="p-4">No patient.</p>;
+  if (!patient)
+    return (
+      <section className="xs:h-dvh lg:h-full w-full grid place-items-center">
+        <h1 className="text-2xl font-bold tracking-tight">
+          Patient not found.
+        </h1>
+      </section>
+    );
 
   return (
     <section className="flex flex-col xs:w-full lg:basis-full gap-3 lg:overflow-auto lg:pr-2 scrollbar-hide">
