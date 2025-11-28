@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navigation from "./components/header/Navigation";
 import { Outlet } from "react-router-dom";
 import Loader from "./components/ui/Loader";
-import type { PatientData } from "./lib/types";
+import type { PatientData } from "../src/lib/types";
 import Patients from "./components/patients/Patients";
 
 const App = () => {

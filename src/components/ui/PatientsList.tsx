@@ -1,17 +1,21 @@
 import ellipsis from "../../assets/icons/ellipsis_horizontal.svg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import type { PatientsProps } from "../../lib/types";
 
 const PatientsList = ({ patients }: PatientsProps) => {
   return (
-    <ul className="h-full flex flex-col gap-8 overflow-auto pr-4">
+    <ul className="h-full flex flex-col gap-8 overflow-auto pr-3">
       {patients &&
         patients.map((patient) => {
           return (
             <li key={patient.name} className="hover:opacity-80">
-              <Link
+              <NavLink
                 to={`/${encodeURIComponent(patient.name)}`}
-                className="flex justify-between items-center"
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex items-center justify-between p-2 bg-[#F5F5F5] rounded-lg"
+                    : "flex items-center justify-between p-2"
+                }
               >
                 <div className="flex items-center gap-3">
                   <img
@@ -33,7 +37,7 @@ const PatientsList = ({ patients }: PatientsProps) => {
                   width={15}
                   height={15}
                 />
-              </Link>
+              </NavLink>
             </li>
           );
         })}
