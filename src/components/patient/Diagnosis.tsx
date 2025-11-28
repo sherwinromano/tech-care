@@ -1,8 +1,9 @@
-import lungs from "../../assets/icons/respiratory.svg";
-import temperature from "../../assets/icons/temperature.svg";
-import heart from "../../assets/icons/heart_bpm.svg";
-import chevron_up from "../../assets/icons/chevron_up.svg";
-import chevron_down from "../../assets/icons/chevron_down.svg";
+import lungs from "@/assets/icons/respiratory.svg";
+import temperature from "@/assets/icons/temperature.svg";
+import heart from "@/assets/icons/heart_bpm.svg";
+import chevron_up from "@/assets/icons/chevron_up.svg";
+import chevron_down from "@/assets/icons/chevron_down.svg";
+import type { DiagnosisProps } from "@/lib/types";
 
 import {
   Chart as ChartJS,
@@ -25,22 +26,6 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
-type DiagnosisArr = {
-  month: string;
-  year: number;
-  blood_pressure: {
-    systolic: { value: number; levels: string };
-    diastolic: { value: number; levels: string };
-  };
-  heart_rate: { value: number; levels: string };
-  respiratory_rate: { value: number; levels: string };
-  temperature: { value: number; levels: string };
-}[];
-
-type DiagnosisProps = {
-  diagnosis: DiagnosisArr;
-};
 
 const Diagnosis = ({ diagnosis }: DiagnosisProps) => {
   const labels = diagnosis.map((item) => `${item.month}, ${item.year}`);

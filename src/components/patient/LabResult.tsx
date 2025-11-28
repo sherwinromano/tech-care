@@ -1,4 +1,4 @@
-import download from "../../assets/icons/download.svg";
+import download from "@/assets/icons/download.svg";
 
 const LabResult = ({ lab_results }: { lab_results: string[] }) => {
   return (

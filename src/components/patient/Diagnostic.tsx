@@ -1,14 +1,6 @@
-type DiagnosticArr = {
-  name: string;
-  description: string;
-  status: string;
-}[];
+import type { DiagnosticProps } from "@/lib/types";
 
-type Diagnostic = {
-  diagnostic: DiagnosticArr;
-};
-
-const Diagnostic = ({ diagnostic }: Diagnostic) => {
+const Diagnostic = ({ diagnostic }: DiagnosticProps) => {
   return (
     <section className="bg-white rounded-2xl p-4 flex flex-col gap-9 h-full overflow-hidden w-full">
       <h1 className="font-bold text-2xl">Diagnostic List</h1>

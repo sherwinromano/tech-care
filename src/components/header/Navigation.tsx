@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import logo from "../../assets/icons/testlogo.svg";
-import bars from "../../assets/icons/bars-3.svg";
-import xMark from "../../assets/icons/x-mark.svg";
+import logo from "@/assets/icons/testlogo.svg";
+import bars from "@/assets/icons/bars-3.svg";
+import xMark from "@/assets/icons/x-mark.svg";
 import User from "./User";
 import {
   Drawer,
@@ -9,9 +9,9 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTrigger,
-} from "../ui/drawer";
-import PatientsList from "../ui/PatientsList";
-import type { PatientsProps } from "../../lib/types";
+} from "@/components/ui/drawer";
+import PatientsList from "@/components/ui/PatientsList";
+import type { PatientsProps } from "@/lib/types";
 
 const Navigation = ({ patients }: PatientsProps) => {
   return (

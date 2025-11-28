@@ -1,6 +1,6 @@
-import settings from "../../assets/icons/settings.svg";
-import ellipsis from "../../assets/icons/ellipsis_vertical.svg";
-import doctorImage from "../../assets/doctor-image.jpg";
+import settings from "@/assets/icons/settings.svg";
+import ellipsis from "@/assets/icons/ellipsis_vertical.svg";
+import doctorImage from "@/assets/doctor-image.jpg";
 
 const User = () => {
   return (
